@@ -19,15 +19,17 @@ const deposit = confirm('Есть ли у вас депозит в банке? Y
 
 
 const expenses=[];
-let sum = 0;
+let value = 0;
 let getExpensesSum = 0;
 const getExpensesMonth = function(){
     for (let i=0; i < 2; i++) {
         expenses[i] = prompt('Введите обязательную статью расходов??');
-    do {
-            sum = +prompt('Во сколько это обойдется?');
-     } while (!isNumber(sum));
-     getExpensesSum+=sum;
+        do 
+        {
+            value = prompt('Во сколько это обойдется?');
+         } 
+         while (isNaN(parseFloat(value)) || value < 0);
+     getExpensesSum+=value;
          }
    console.log(expenses);
     return getExpensesSum;
@@ -52,8 +54,8 @@ function getTargetMonth(mission,accumulatedMonth) {
     const getTargetMonthSum = mission / accumulatedMonth;
     return getTargetMonthSum;
 }
-const ToBeOrNot = getTargetMonth(mission,accumulatedMonth);
-console.log(ToBeOrNot);
+const GetTarget = getTargetMonth(mission,accumulatedMonth);
+console.log(GetTarget);
 
 
 const budgetDay = accumulatedMonth/30;
@@ -81,7 +83,7 @@ const getStatusIncome = function(){
 console.log(getStatusIncome());
 
       
-if (ToBeOrNot>0) {
+if (GetTarget>0) {
      console.log('Цель будет достигнута')
          } else {console.log('Цель будет достигнута');
         }
